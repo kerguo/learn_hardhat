@@ -9,17 +9,17 @@ describe("MyToken", async () => {
     let myTokenAddress
 
     beforeEach(async () => {
-        console.log("beforeEach .....waiting 2 seconds  ")
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        console.log("start.....running  ")
+        // console.log("beforeEach .....waiting 2 seconds  ")
+        // await new Promise((resolve) => setTimeout(resolve, 2000));
+        // console.log("start.....running  ")
 
         const MyTokenFactory = await ethers.getContractFactory("MyToken")
         myToken = await MyTokenFactory.deploy(initialSupply)
         myToken.waitForDeployment()
         myTokenAddress = await myToken.getAddress()
 
-        
-        // expect(myToken).to.be.properlyDeployed()
+
+        expect(myToken).to.be.properlyDeployed()
 
         expect(myTokenAddress.length).to.greaterThan(0)
         console.log("myToken deployed to: ", myTokenAddress)   
